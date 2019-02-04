@@ -58,6 +58,7 @@ void ProgRegisters:: setCC(unsigned bitNumber, unsigned val)
 unsigned ProgRegisters:: getCC(unsigned bitNumber)
 {
 	return 0;
+	// your code here
 }
           
 /*-------------------------------------------------------------------------------------------------
