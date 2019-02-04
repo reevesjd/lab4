@@ -18,7 +18,8 @@
 --------------------------------------------------------------------------*/
 Memory::Memory()
 {
-    reset();
+	mem{};
+    memError = 0;
 }
 /*-------------------------------------------------------------------------
   Function:     store 
@@ -27,7 +28,15 @@ Memory::Memory()
 --------------------------------------------------------------------------*/
 void   Memory::store	(uint64_t waddr, uint64_t val) // takes word address
 {
-   // your code here 
+	if (waddr < 0 || waddr > 1023)
+	{
+		memError = 1;
+	}
+	else
+	{
+		memError = 0;
+		mem[waddr] = val;
+	}
 }
 /*-------------------------------------------------------------------------
   Function:     fetch 
@@ -36,7 +45,15 @@ void   Memory::store	(uint64_t waddr, uint64_t val) // takes word address
 --------------------------------------------------------------------------*/
 uint64_t  Memory::fetch	(uint64_t waddr) // takes word address
 {
-	return 0;
+	if (waddr < 0 || waddr > 1023)
+	{
+		memError = 1;
+	}
+	else
+	{
+		memError = 0;
+		mem[waddr];
+	}
 }
 /*--------------------------------------------------------------------
    Function:   getByte
@@ -47,7 +64,7 @@ uint64_t  Memory::fetch	(uint64_t waddr) // takes word address
 --------------------------------------------------------------------*/
 unsigned char   Memory::getByte	(uint64_t byteAddress) // takes byte address
 {
-	return 0;
+	
 }
 /*--------------------------------------------------------------------
    Function:     putByte
@@ -89,5 +106,6 @@ void Memory::putWord	(uint64_t byteAddress, uint64_t wordValue) // byte address 
 --------------------------------------------------------------------*/
 void  Memory::reset	(void) // clears memory to all zero
 {
-	// your code here
+	memset(mem, 0, 64);
+	memError = 0;
 }
